@@ -3,18 +3,9 @@ import character_creator as c
 import bestiary as b
 import items as i
 
-#lore notes
-#venata and asvogod both have dragoons because they were up north where dragons were
-#mythril is found in the mountains between venata and asvogod -- they often fight over it
-#valosykr -- valhalla equivalent for asvogod
-#necromancy is banned in aten nu
-#goblins are usually peasant workers among orc tribes
-#sages are gifted magic students, sorcerers are veterans, mages are the rest of the lot
-#-vance is a common suffix in Legalian towns (meaning literally "town")
+#DEITIES - Ishtar, Saami, Athas
 
-#DEITIES - Ishtar, Saami
-
-#LOCATIONS - Killbragant, Al Khazan, Dragenvance, Darkmoon, Dranor, Edo, Vindale, Tyr, Mandal, Lanathor, Riva, Stygian Abyss, Darkspyre, Trinsic, Serpentine Isles, Kendor, Mordvania
+#LOCATIONS - Killbragant, Al Khazan, Dragenvance, Darkmoon, Dranor, Edo, Vindale, Tyr, Mandal, Lanathor, Riva, Stygian Abyss, Darkspyre, Trinsic, Serpentine Isles, Kendor, Mordvania, Ravenloft
 #new locations need changes to map nodes, kingdom territories, and enemy spawns
 all_locations = ["Felghana", "Olbereth", "Orthanc","Shendao","Anabennar", "Karateka", "The Moorish Gap", "Telos", "Misthaven", "Altes","Archea", "Solasta", "Mangsvance", "Solitaire","Verdigris", "Aristo", "Condor", "Arabath", "Gilboa","Ashwood", "Beggar's Grove", "Ambervale", "Wurmswood", "Nethervale", "The Dreadlands"]
 

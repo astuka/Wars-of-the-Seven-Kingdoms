@@ -25,7 +25,7 @@ venata_male_name = ["Haringoth", "Julian", "Oliver", "Swaine", "Vivaldi", "Balli
 amoranth_female_name = ["Poppet", "Flitt", "Jakuri","Phoebi", "Mio", "Skara", "Dupree"]
 amoranth_male_name = ["Belphegor", "Talon", "Shul'Atok", "Nikademus", "Morgoth", "Kul'Tan", "Charn", "Zod", "Morwick", "Raz", "Ezekiel", "Morath"]
 
-#JOBS - Monk, Chemist, Illusionist, assassin
+#JOBS - Monk, Chemist, Illusionist, assassin, Warlock
 #new jobs need to have changes in job attributes and job preferred weapon
 asvogod_female_job = ["Cleric", "Cook", "Shieldbearer", "Witch", "Blacksmith", "Necromancer"]
 asvogod_male_job = ["Dragoon", "Shieldbearer", "Berserker", "Merchant", "Blacksmith"]
