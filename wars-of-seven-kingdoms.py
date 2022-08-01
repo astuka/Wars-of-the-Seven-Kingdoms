@@ -3,9 +3,9 @@ import character_creator as c
 import bestiary as b
 import items as i
 
-#DEITIES - Ishtar, Saami, Athas
+#DEITIES - Ishtar, Saami, Athas, Phoros
 
-#LOCATIONS - Killbragant, Al Khazan, Dragenvance, Darkmoon, Dranor, Edo, Vindale, Tyr, Mandal, Lanathor, Riva, Stygian Abyss, Darkspyre, Trinsic, Serpentine Isles, Kendor, Mordvania, Ravenloft
+#LOCATIONS - Killbragant, Al'Khazan, Dragenvance, Darkmoon, Dranor, Edo, Vindale, Tyr, Mandal, Lanathor, Riva, Stygian Abyss, Darkspyre, Trinsic, Serpentine Isles, Kendor, Mordvania, Ravenloft, Greyhawk, Ankara, Al'Zaddim, Halk'Alir, The Vicious Strand
 #new locations need changes to map nodes, kingdom territories, and enemy spawns
 all_locations = ["Felghana", "Olbereth", "Orthanc","Shendao","Anabennar", "Karateka", "The Moorish Gap", "Telos", "Misthaven", "Altes","Archea", "Solasta", "Mangsvance", "Solitaire","Verdigris", "Aristo", "Condor", "Arabath", "Gilboa","Ashwood", "Beggar's Grove", "Ambervale", "Wurmswood", "Nethervale", "The Dreadlands"]
 
@@ -25,7 +25,7 @@ amoranth = Kingdom("Amoranth",["Ashwood", "Beggar's Grove", "Ambervale", "Wurmsw
 
 kingdoms = [asvogod,wuxia,sansoba,atennu,legalia,venata,amoranth]
 
-#SKILLS - Paralyze, Rune Missile
+#SKILLS - Paralyze, Rune Missile, Lich Raise, Fire Nuke
 skills = ["Chaos Strike", "Glory of Valoskyr", "Bloodlust", "War Cry", "Heavy Hitter", "Rampage", "Aetherburst", "Thundercracker", "Frostfall", "Firestorm", "Hollow Point", "Wildly Armed", "Rapid Fire", "Reload", "Plaguing Doom", "Scarlet Grace", "Beast Communion", "Plague", "Devil's Kiss", "Deathly Gaze", "Razor's Edge", "Viral Influx", "Umbral Shock", "Divine Sacrifice", "Knight's Honor", "Know Thyself", "Planet Cracker", "Ash and Gunpowder", "Fortify", "Artillery Barrage", "Bushido", "1000 Cuts", "Bloody Slice", "Harakiri", "Evade", "Death on High", "Dragon Communion", "Charge", "Dragon Dive", "God's Chosen", "Divine Strike", "Holy Wrath", "Hammer Throw", "Umbral Collapse", "Astral Lift", "Aethersurge", "Family Feast", "Mise en Scene", "Order Up!", "High Heat", "Carve", "Orchestra", "Chord of Death", "Shanty", "Lullaby", "Dance of All Seasons", "Waltz", "Samba", "Two-Step", "Charm", "Blessing of God", "Holy Writ", "Cleansing Spirit", "Healing Chime", "Holy", "Pool of Radiance", "Deal Breaker", "Infinite Light", "Manta", "Thrash Disposal", "Golden Earth", "Jamais Vu", "Bash", "Catastrophe", "Hades Blast", "Acrobat Kick", "Debilitate"]
 
 roster = []
@@ -48,8 +48,8 @@ while game:
             print(i.name+", the "+i.gender+" "+i.race+" "+i.job+". Currently in "+i.current_location+".")
 
     if "run" in player_input:
-        for i in range(20):
-            roll = r.randrange(0,17)
+        for i in range(len(roster)):
+            roll = r.randrange(0,22)
             if roll == 0: #paladin v. witch/necromancer/reaper
                 person1 = roster[r.randrange(0,len(roster))]
                 person2 = roster[r.randrange(0,len(roster))]
@@ -277,7 +277,50 @@ while game:
                 roster.append(adventurer)
                 print("A new adventurer named "+adventurer.name+" the "+adventurer.race+" "+adventurer.job+" has shown up in "+adventurer.current_location+".")
 
-                    
+            if roll == 17: #kingdoms make peace
+                kingdom1 = kingdoms[r.randrange(0,len(kingdoms))]
+                kingdom2 = kingdoms[r.randrange(0,len(kingdoms))]
+
+                if kingdom1.status[kingdom2.name] == "War" and kingdom2.status[kingdom1.name] == "War": 
+                    print(kingdom1.name+" and "+kingdom2.name+" have made peace!")
+                    kingdom1.status[kingdom2.name] = "Peace"
+                    kingdom2.status[kingdom1.name] = "Peace"
+            
+            if roll == 18: #convo roll
+                person1 = roster[r.randrange(0,len(roster))]
+                person2 = roster[r.randrange(0,len(roster))]
+                if person1 != person2 and person1.current_location == person2.current_location:
+                    print(person1.name+" and "+person2.name+" had a conversation in "+person1.current_location+".")
+                    if person1.culture == "Asvogod":
+                        print(person1.name+": Wish I was back on viking raids. Adventuring work can get so dull.")
+                        if person2.culture == "Asvogod":
+                            print(person2.name+": Hopefully once these wars are over, things can go back to normal.")
+                        else:
+                            print(person2.name+": I'll never understand Asvogodians and their obsession with killing and pillaging.")
+            
+            if roll == 19: #faction defection
+                person1 = roster[r.randrange(0,len(roster))]
+                defection = c.all_factions[r.randrange(0,len(c.all_factions))]
+                if defection != person1.faction:
+                    print(person1.name+" the "+person1.race+" "+person1.job+" has defected! They are now a member of the faction "+defection)
+                    person1.faction = defection
+
+            if roll == 20: #lost item quest
+                person1 = roster[r.randrange(0,len(roster))]
+                if person1.attributes["Insight"] > 0 or person1.attributes["Perception"] > 0:
+                    print(person1.name+" the "+person1.race+" "+person1.job+" has helped find a lost item in "+person1.current_location+". They gained some renown and gold.")
+                    person1.renown += 5
+                    person1.gold += r.randrange(0,100)
+                    person1.attributes["Perception"] += 1
+
+            if roll == 21: #kidnapping quest
+                person1 = roster[r.randrange(0,len(roster))]
+                if person1.attributes["Investigation"] > 1:
+                    print(person1.name+" the "+person1.race+" "+person1.job+" has helped solve a kidnapping case in "+person1.current_location+". They gained some renown and gold.")
+                    person1.renown += 10
+                    person1.gold += r.randrange(50,100)
+                    person1.attributes["Investigation"] += 1
+
 
 
 

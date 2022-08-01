@@ -7,7 +7,7 @@ class Item:
         self.defense = defense
         self.price = price
 
-#ITEMS - pickles, 
+#ITEMS - pickles, raw meat, cooked meat, crystalized teardrop, oil flask
 
 #crafting - "Tempered Bone", "Essence Powder", "Cocoon", "Winter Shard", "Magical Clay", "Fire Stone","Volcanic Ash", "Silver Feather", "Sun Stone", 
 

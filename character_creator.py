@@ -2,30 +2,30 @@ import random as r
 
 cultures = ["Asvogod", "Wuxia", "San Soba", "Aten Nu", "Legalia", "Venata", "Amoranth"]
 
-#NAMES- Silmaris, Krog, Zubar, Shandaran, Vashar, Arilo, Matilda, Lyra, Thalion, Domovir, Kirt, Malkor, Kirk, Caun, Kah'Pa, Tietra, Wiegrath, Jenkins, Jonathan, Reynfred
+#NAMES- 
 #no changes needed for names, add as many as u want :)
 asvogod_female_name = ["Therazina", "Fiona", "Tamara", "Gail", "Freya", "Lydia", "Anya", "Faye", "Gertrude"]
-asvogod_male_name = ["Gustav", "Falder", "Brangeth", "Drago", "Geld", "Terag", "Rolf", "Nasgoli", "Odin", "Ragnox", "Skyur", "Korgan", "Lenar", "Zalbrag", "Farnus", "Thordal"]
+asvogod_male_name = ["Gustav", "Falder", "Brangeth", "Drago", "Geld", "Terag", "Rolf", "Nasgoli", "Odin", "Ragnox", "Skyur", "Korgan", "Lenar", "Zalbrag", "Farnus", "Thordal", "Domovir", "Wiegrath", "Grondval"]
 
-wuxia_female_name = ["Totori", "Minhsa", "Kesmati", "Aran"]
+wuxia_female_name = ["Totori", "Minhsa", "Kesmati", "Aran", "Tanari", "Jade"]
 wuxia_male_name = ["Tenyo", "Hong Lu", "Sentana", "Sedo", "Shinyo", "Kenshi"]
 
 sansoba_female_name = ["Atma", "Ishala", "Jasmina", "Zala", "Bastille", "Aiela", "Aria", "Xena", "Iola"]
-sansoba_male_name = ["Alando", "Saleh", "Hammurabi", "Shabab", "Jashar", "Shobach", "Osyris"]
+sansoba_male_name = ["Alando", "Saleh", "Hammurabi", "Shabab", "Jashar", "Shobach", "Osyris", "Shandaran", "Vashar", "Calango", "Jagar", "Muhar", "Qaddam"]
 
-atennu_female_name = ["Juniper", "Sena", "Tigerlily", "Hyacinth", "Elm"]
-atennu_male_name = ["Lacroix", "Indoril", "Orwell", "Haudlin", "Ephraim", "Sion", "Cronus", "Ra", "Eamon", "Malathir", "Erasmus", "Eagan", "Morpheus"]
+atennu_female_name = ["Juniper", "Sena", "Tigerlily", "Hyacinth", "Elm", "Taran"]
+atennu_male_name = ["Lacroix", "Indoril", "Orwell", "Haudlin", "Ephraim", "Sion", "Cronus", "Ra", "Eamon", "Malathir", "Erasmus", "Eagan", "Morpheus", "Silmaris", "Thalion", "Illyrin"]
 
-legalia_female_name = ["Pandora", "Pyre", "Indoline", "Jean", "Calliope", "Trisha", "Isolde", "Juliana", "Laura", "Alma"]
-legalia_male_name = ["Logan", "Rean", "Bernhardt", "Lantz", "Carpe", "Bran", "Castaban", "Cupid", "Roche", "Arthur", "Gawain", "Desmond", "Zach", "Zweihad", "Lancelot"]
+legalia_female_name = ["Pandora", "Pyre", "Indoline", "Jean", "Calliope", "Trisha", "Isolde", "Juliana", "Laura", "Alma", "Lyra", "Tietra"]
+legalia_male_name = ["Logan", "Rean", "Bernhardt", "Lantz", "Carpe", "Bran", "Castaban", "Cupid", "Roche", "Arthur", "Gawain", "Desmond", "Zach", "Zweihad", "Lancelot", "Jonathan", "Conrad", "Godel", "Abelard"]
 
-venata_female_name = ["Caroline", "Alice", "Esther", "Polka", "Lucca", "Ariel", "Victoria", "Annette", "Barbara"]
-venata_male_name = ["Haringoth", "Julian", "Oliver", "Swaine", "Vivaldi", "Ballister", "Tabor", "Matzo", "Roth", "Linden", "Chopan", "Pildar", "Vernon", "Roscoe", "Kern", "Ronald"]
+venata_female_name = ["Caroline", "Alice", "Esther", "Polka", "Lucca", "Ariel", "Victoria", "Annette", "Barbara", "Matilda"]
+venata_male_name = ["Haringoth", "Julian", "Oliver", "Swaine", "Vivaldi", "Ballister", "Tabor", "Matzo", "Roth", "Linden", "Chopan", "Pildar", "Vernon", "Roscoe", "Kern", "Ronald", "Arilo", "Kirt", "Jenkins", "Reynfred", "Kiernan", "Warrick", "Belmont", "Randolf"]
 
-amoranth_female_name = ["Poppet", "Flitt", "Jakuri","Phoebi", "Mio", "Skara", "Dupree"]
-amoranth_male_name = ["Belphegor", "Talon", "Shul'Atok", "Nikademus", "Morgoth", "Kul'Tan", "Charn", "Zod", "Morwick", "Raz", "Ezekiel", "Morath"]
+amoranth_female_name = ["Poppet", "Flitt", "Jakuri","Phoebi", "Mio", "Skara", "Dupree", "Caun", "Kah'Pa", "Ak'Shel", "Anhaga"]
+amoranth_male_name = ["Belphegor", "Talon", "Shul'Atok", "Nikademus", "Morgoth", "Kul'Tan", "Charn", "Zod", "Morwick", "Raz", "Ezekiel", "Morath", "Krog", "Zubar", "Malkor", "Drakalas", "Biskip", "Krunk"]
 
-#JOBS - Monk, Chemist, Illusionist, assassin, Warlock
+#JOBS - Monk, Chemist, Illusionist, Assassin, Warlock, Gladiator, Templar, Crusader
 #new jobs need to have changes in job attributes and job preferred weapon
 asvogod_female_job = ["Cleric", "Cook", "Shieldbearer", "Witch", "Blacksmith", "Necromancer"]
 asvogod_male_job = ["Dragoon", "Shieldbearer", "Berserker", "Merchant", "Blacksmith"]
@@ -60,6 +60,7 @@ amoranth_races = ["Dark Elf", "Low Elf", "Gnome", "Half-Elf", "Wood Elf", "Half-
 
 #FACTIONS - Corpse Brigade
 #new factions need to have changes in faction attributes and starting location
+all_factions = ["Men of the Mountains", "Asvogod", "Adventurer's Guild", "Wuxia", "The Caravan", "Free Men", "San Soba", "Aten Nu", "The Holy Order", "Legalia", "Venata", "Amoranth"]
 asvogod_factions = ["Men of the Mountains", "Asvogod"]
 wuxia_factions = ["Adventurer's Guild", "Wuxia"]
 sansoba_factions = ["The Caravan", "Free Men", "San Soba"]

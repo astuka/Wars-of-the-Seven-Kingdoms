@@ -10,7 +10,7 @@ class Enemy:
         self.items = items
 
 
-#ENEMIES - Black Knight, Skinwalker, Harpy, Mindbender, Wild Vampire, Wild Lycanthrope, Siren, Gargoyle
+#ENEMIES - Black Knight, Skinwalker, Harpy, Mindbender, Wild Vampire, Wild Lycanthrope, Siren, Gargoyle, Mountain Stalker, Giant Scorpion, Lich
 #low level - "Goblin", "Deserter", "Kobold", "Slime", "Shambler", "Armored Lizard", "Warg"
 bandit = Enemy("Bandit", r.randrange(2,5), r.randrange(2,5), r.randrange(0,10), [])
 
