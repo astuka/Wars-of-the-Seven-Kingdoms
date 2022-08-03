@@ -17,17 +17,17 @@ learn a new skill - NEED SKILLS<br />
 hunting for food - NEED ITEMS<br />
 summoning event leads to actual lesser demon fight, if they win they gain summoning skill - NEED ENEMIES<br />
 go to jail for thieving, jail break event - NEED STATUSES<br />
-wizards can teleport with astral<br />
-cannot freely go to places at war with your faction<br />
-statuses - exploring, jailed, etc.<br />
-add weapons - set up stuff for people buying only preferred weapon<br />
-kingdoms have their own monetary coffers<br />
-kingdoms can ally with one another<br />
-add offense and defense for items to battle stuff<br />
-update what needs to be changed when new items are added<br />
-deities that support adventurers<br />
-hunger system<br />
-solve a puzzle to get a good item<br />
+wizards can teleport with astral - LATER ADDITION<br />
+cannot freely go to places at war with your faction - LATER ADDITION<br />
+statuses - exploring, jailed, etc. - LATER ADDITION <br />
+add weapons - set up stuff for people buying only preferred weapon - LATER ADDITION<br />
+kingdoms have their own monetary coffers - LATER ADDITION<br />
+kingdoms can ally with one another - LATER ADDITION<br />
+add offense and defense for items to battle stuff - NEED ITEMS<br />
+update what needs to be changed when new items are added - NEED ITEMS<br />
+deities that support adventurers - LATER ADDITION<br />
+hunger system - LATER ADDITION<br />
+solve a puzzle to get a good item - NEED ITEMS<br />
 town tries to capture vampire/lycanthrope character and burn them at the stake<br />
 kingdom tournaments<br />
 make offense and defense a single, persistent class attribute thats updated each turn <br />
