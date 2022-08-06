@@ -28,12 +28,11 @@ update what needs to be changed when new items are added - NEED ITEMS<br />
 deities that support adventurers - LATER ADDITION<br />
 hunger system - LATER ADDITION<br />
 solve a puzzle to get a good item - NEED ITEMS<br />
-town tries to capture vampire/lycanthrope character and burn them at the stake<br />
-kingdom tournaments<br />
-make offense and defense a single, persistent class attribute thats updated each turn <br />
-event: pray to patron god <br />
-"details" screen if you input a specific name + race <br />
-party system? <br />
+kingdom tournaments - LATER ADDITION<br />
+make offense and defense a single, persistent class attribute thats updated each turn - LATER ADDITION<br />
+event: pray to patron god - NEED DEITIES <br />
+party system? - LATER ADDITION <br />
+more conversations - LATER ADDITION<br />
 
 # Lore Notes
 venata and asvogod both have dragoons because they were up north where dragons were<br />

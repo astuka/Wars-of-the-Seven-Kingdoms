@@ -1,7 +1,7 @@
 import random as r
 import character_creator as c
 import bestiary as b
-import items as i
+import items as it
 
 #DEITIES - Ishtar, Saami, Athas, Phoros
 
@@ -46,10 +46,16 @@ while game:
     if "roster" in player_input:
         for i in roster:
             print(i.name+", the "+i.gender+" "+i.race+" "+i.job+". Currently in "+i.current_location+".")
+    
+    if "details" in player_input:
+        for i in roster:
+            if i.name in player_input and i.race in player_input:
+                print(i.name+", the "+i.gender+" "+i.race+" "+i.job+". Currently in "+i.current_location+".")
+                print(i.attributes)
 
     if "run" in player_input:
         for i in range(len(roster)):
-            roll = r.randrange(0,22)
+            roll = r.randrange(0,23)
             if roll == 0: #paladin v. witch/necromancer/reaper
                 person1 = roster[r.randrange(0,len(roster))]
                 person2 = roster[r.randrange(0,len(roster))]
@@ -310,7 +316,7 @@ while game:
                 if person1.attributes["Insight"] > 0 or person1.attributes["Perception"] > 0:
                     print(person1.name+" the "+person1.race+" "+person1.job+" has helped find a lost item in "+person1.current_location+". They gained some renown and gold.")
                     person1.renown += 5
-                    person1.gold += r.randrange(0,100)
+                    person1.money += r.randrange(0,100)
                     person1.attributes["Perception"] += 1
 
             if roll == 21: #kidnapping quest
@@ -318,8 +324,18 @@ while game:
                 if person1.attributes["Investigation"] > 1:
                     print(person1.name+" the "+person1.race+" "+person1.job+" has helped solve a kidnapping case in "+person1.current_location+". They gained some renown and gold.")
                     person1.renown += 10
-                    person1.gold += r.randrange(50,100)
+                    person1.money += r.randrange(50,100)
                     person1.attributes["Investigation"] += 1
+
+            if roll == 22: #vampire/lycanthrope inquisition
+                person1 = roster[r.randrange(0,len(roster))]
+                if person1.race == "Lycanthrope" or person1.race == "Vampire":
+                    if person1.attributes["Perception"] > 0 and person1.attributes["Athletics"] > 0:
+                        print("A group of locals at "+person1.current_location+" heard rumors of a "+person1.race+" in their midst. "+person1.name+" the "+person1.race+" "+person1.job+" was able to get out of town unscathed before the villagers were able to catch them.")
+                        person1.attributes["Athletics"] += 1
+                    else:
+                        print("A group of locals at "+person1.current_location+" heard rumors of a "+person1.race+" in their midst. Unfortunately, "+person1.name+" the "+person1.race+" "+person1.job+" was caught and burned at the stake.")
+                        roster.remove(person1)
 
 
 
