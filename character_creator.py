@@ -2,7 +2,7 @@ import random as r
 
 cultures = ["Asvogod", "Wuxia", "San Soba", "Aten Nu", "Legalia", "Venata", "Amoranth"]
 
-#NAMES- 
+#NAMES- Sievert
 #no changes needed for names, add as many as u want :)
 asvogod_female_name = ["Therazina", "Fiona", "Tamara", "Gail", "Freya", "Lydia", "Anya", "Faye", "Gertrude"]
 asvogod_male_name = ["Gustav", "Falder", "Brangeth", "Drago", "Geld", "Terag", "Rolf", "Nasgoli", "Odin", "Ragnox", "Skyur", "Korgan", "Lenar", "Zalbrag", "Farnus", "Thordal", "Domovir", "Wiegrath", "Grondval"]
