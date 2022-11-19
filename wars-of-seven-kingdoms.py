@@ -2,34 +2,33 @@ import random as r
 import character_creator as c
 import bestiary as b
 import items as it
-
-#DEITIES - Ishtar, Saami, Athas, Phoros
+import skills as sk
+import markets as mkt
 
 #LOCATIONS - Killbragant, Al'Khazan, Dragenvance, Darkmoon, Dranor, Edo, Vindale, Tyr, Mandal, Lanathor, Riva, Stygian Abyss, Darkspyre, Trinsic, Serpentine Isles, Kendor, Mordvania, Ravenloft, Greyhawk, Ankara, Al'Zaddim, Halk'Alir, The Vicious Strand
 #new locations need changes to map nodes, kingdom territories, and enemy spawns
 all_locations = ["Felghana", "Olbereth", "Orthanc","Shendao","Anabennar", "Karateka", "The Moorish Gap", "Telos", "Misthaven", "Altes","Archea", "Solasta", "Mangsvance", "Solitaire","Verdigris", "Aristo", "Condor", "Arabath", "Gilboa","Ashwood", "Beggar's Grove", "Ambervale", "Wurmswood", "Nethervale", "The Dreadlands"]
 
 class Kingdom:
-    def __init__(self, name, territory, status):
+    def __init__(self, name, territory, status, money):
         self.name = name
         self.territory = territory
         self.status = status
+        self.money = money
 
-asvogod = Kingdom("Asvogod",["Felghana", "Olbereth", "Orthanc"], {"Asvogod": "Self", "Wuxia": "Peace", "San Soba": "Peace", "Aten Nu": "Peace", "Legalia": "Peace", "Venata": "Peace", "Amoranth": "Peace"})
-wuxia = Kingdom("Wuxia",["Shendao"], {"Asvogod": "Peace", "Wuxia": "Self", "San Soba": "Peace", "Aten Nu": "Peace", "Legalia": "Peace", "Venata": "Peace", "Amoranth": "Peace"})
-sansoba = Kingdom("San Soba",["Anabennar", "Karateka", "The Moorish Gap"], {"Asvogod": "Peace", "Wuxia": "Peace", "San Soba": "Self", "Aten Nu": "Peace", "Legalia": "Peace", "Venata": "Peace", "Amoranth": "Peace"})
-atennu = Kingdom("Aten Nu",["Telos", "Misthaven", "Altes"], {"Asvogod": "Peace", "Wuxia": "Peace", "San Soba": "Peace", "Aten Nu": "Self", "Legalia": "Peace", "Venata": "Peace", "Amoranth": "Peace"})
-legalia = Kingdom("Legalia",["Archea", "Solasta", "Mangsvance", "Solitaire"], {"Asvogod": "Peace", "Wuxia": "Peace", "San Soba": "Peace", "Aten Nu": "Peace", "Legalia": "Self", "Venata": "Peace", "Amoranth": "Peace"})
-venata = Kingdom("Venata",["Verdigris", "Aristo", "Condor", "Arabath", "Gilboa"], {"Asvogod": "Peace", "Wuxia": "Peace", "San Soba": "Peace", "Aten Nu": "Peace", "Legalia": "Peace", "Venata": "Self", "Amoranth": "Peace"})
-amoranth = Kingdom("Amoranth",["Ashwood", "Beggar's Grove", "Ambervale", "Wurmswood", "Nethervale", "The Dreadlands"], {"Asvogod": "Peace", "Wuxia": "Peace", "San Soba": "Peace", "Aten Nu": "Peace", "Legalia": "Peace", "Venata": "Peace", "Amoranth": "Self"})
+asvogod = Kingdom("Asvogod",["Felghana", "Olbereth", "Orthanc"], {"Asvogod": "Self", "Wuxia": "Peace", "San Soba": "Peace", "Aten Nu": "Peace", "Legalia": "Peace", "Venata": "Peace", "Amoranth": "Peace"}, 0)
+wuxia = Kingdom("Wuxia",["Shendao"], {"Asvogod": "Peace", "Wuxia": "Self", "San Soba": "Peace", "Aten Nu": "Peace", "Legalia": "Peace", "Venata": "Peace", "Amoranth": "Peace"}, 0)
+sansoba = Kingdom("San Soba",["Anabennar", "Karateka", "The Moorish Gap"], {"Asvogod": "Peace", "Wuxia": "Peace", "San Soba": "Self", "Aten Nu": "Peace", "Legalia": "Peace", "Venata": "Peace", "Amoranth": "Peace"}, 0)
+atennu = Kingdom("Aten Nu",["Telos", "Misthaven", "Altes"], {"Asvogod": "Peace", "Wuxia": "Peace", "San Soba": "Peace", "Aten Nu": "Self", "Legalia": "Peace", "Venata": "Peace", "Amoranth": "Peace"}, 0)
+legalia = Kingdom("Legalia",["Archea", "Solasta", "Mangsvance", "Solitaire"], {"Asvogod": "Peace", "Wuxia": "Peace", "San Soba": "Peace", "Aten Nu": "Peace", "Legalia": "Self", "Venata": "Peace", "Amoranth": "Peace"}, 0)
+venata = Kingdom("Venata",["Verdigris", "Aristo", "Condor", "Arabath", "Gilboa"], {"Asvogod": "Peace", "Wuxia": "Peace", "San Soba": "Peace", "Aten Nu": "Peace", "Legalia": "Peace", "Venata": "Self", "Amoranth": "Peace"}, 0)
+amoranth = Kingdom("Amoranth",["Ashwood", "Beggar's Grove", "Ambervale", "Wurmswood", "Nethervale", "The Dreadlands"], {"Asvogod": "Peace", "Wuxia": "Peace", "San Soba": "Peace", "Aten Nu": "Peace", "Legalia": "Peace", "Venata": "Peace", "Amoranth": "Self"}, 0)
 
 kingdoms = [asvogod,wuxia,sansoba,atennu,legalia,venata,amoranth]
 
-#SKILLS - Paralyze, Rune Missile, Lich Raise, Fire Nuke
-skills = ["Chaos Strike", "Glory of Valoskyr", "Bloodlust", "War Cry", "Heavy Hitter", "Rampage", "Aetherburst", "Thundercracker", "Frostfall", "Firestorm", "Hollow Point", "Wildly Armed", "Rapid Fire", "Reload", "Plaguing Doom", "Scarlet Grace", "Beast Communion", "Plague", "Devil's Kiss", "Deathly Gaze", "Razor's Edge", "Viral Influx", "Umbral Shock", "Divine Sacrifice", "Knight's Honor", "Know Thyself", "Planet Cracker", "Ash and Gunpowder", "Fortify", "Artillery Barrage", "Bushido", "1000 Cuts", "Bloody Slice", "Harakiri", "Evade", "Death on High", "Dragon Communion", "Charge", "Dragon Dive", "God's Chosen", "Divine Strike", "Holy Wrath", "Hammer Throw", "Umbral Collapse", "Astral Lift", "Aethersurge", "Family Feast", "Mise en Scene", "Order Up!", "High Heat", "Carve", "Orchestra", "Chord of Death", "Shanty", "Lullaby", "Dance of All Seasons", "Waltz", "Samba", "Two-Step", "Charm", "Blessing of God", "Holy Writ", "Cleansing Spirit", "Healing Chime", "Holy", "Pool of Radiance", "Deal Breaker", "Infinite Light", "Manta", "Thrash Disposal", "Golden Earth", "Jamais Vu", "Bash", "Catastrophe", "Hades Blast", "Acrobat Kick", "Debilitate"]
-
 roster = []
 hallofheroes = []
+villains = []
 
 for i in range(20):
     adventurer = c.generate()
@@ -55,7 +54,7 @@ while game:
 
     if "run" in player_input:
         for i in range(len(roster)):
-            roll = r.randrange(0,23)
+            roll = r.randrange(0,28)
             if roll == 0: #paladin v. witch/necromancer/reaper
                 person1 = roster[r.randrange(0,len(roster))]
                 person2 = roster[r.randrange(0,len(roster))]
@@ -136,7 +135,8 @@ while game:
                 person1 = roster[r.randrange(0,len(roster))]
                 if person1.alignment < 0:
                     if person1.attributes["Stealth"] == 0 or person1.attributes["Sleigh of Hand"] == 0:
-                        print(person1.name+" the "+person1.race+" "+person1.job+" unsuccessfully tried to steal, and was sent to the town jail (except not really because I haven't added this feature yet LOL)")
+                        print(person1.name+" the "+person1.race+" "+person1.job+" unsuccessfully tried to steal, and was sent to the town jail.")
+                        person1.status = "jailed"
                     else:
                         stolen_money = r.randrange(0,100)
                         print(person1.name+" the "+person1.race+" "+person1.job+" successfully stole "+str(stolen_money)+" gold while thieving.")
@@ -337,6 +337,78 @@ while game:
                         print("A group of locals at "+person1.current_location+" heard rumors of a "+person1.race+" in their midst. Unfortunately, "+person1.name+" the "+person1.race+" "+person1.job+" was caught and burned at the stake.")
                         roster.remove(person1)
 
+            if roll == 23: #artifact discovery
+                person1 = roster[r.randrange(0,len(roster))]
+
+                if len(it.obtainable_artifacts) != 0:
+                    selected_artifact = it.obtainable_artifacts[r.randrange(0,len(it.obtainable_artifacts))]
+                    person1.inventory.append(selected_artifact)
+                    it.obtainable_artifacts.remove(selected_artifact)
+                    print(person1.name+" the "+person1.race+" "+person1.job+" has obtained the artifact "+selected_artifact.name)
+            
+            if roll == 24: #crafting
+                person1 = roster[r.randrange(0,len(roster))]
+
+                if it.magical_clay in person1.inventory and it.sun_stone in person1.inventory:
+                    person1.inventory.remove(it.magical_clay)
+                    person1.inventory.remove(it.sun_stone)
+                    person1.inventory.append(it.stardust)
+
+                    print(person1.name+" the "+person1.race+" "+person1.job+" crafted some Stardust.")
+
+            if roll == 25: #villain affiliation
+                person1 = roster[r.randrange(0,len(roster))]
+                if person1.renown > 100 and person1.alignment < -50:
+                    print(person1.name+" the "+person1.race+" "+person1.job+" has gained enough ire and infamy to be considered a villain!")
+                    villains.append(person1)
+
+            if roll == 26: #villain duel
+                person1 = roster[r.randrange(0,len(roster))]
+                person2 = roster[r.randrange(0,len(roster))]
+                if person1 != person2 and person1.current_location == person2.current_location and person2 in villains:
+                    print(person1.name+" the "+person1.race+" "+person1.job+" has decided to fight the villain "+person2.name+" the "+person2.race+" "+person2.job+" in order to stop their evil.")
+                    if (person1.attributes["Strength"] + person1.attributes["Dexterity"] + person1.attributes["Intelligence"] + person1.attributes["Summoning"] + person1.attributes["Astral"] + person1.attributes["Umbral"] + person1.attributes["Thunder"] + person1.attributes["Fire"] + person1.attributes["Frost"] + person1.attributes["Perception"] + person1.attributes["Holy"] + person1.attributes["Necromancy"]) > (person2.attributes["Constitution"] +  person2.attributes["Acrobatics"] + person2.attributes["Athletics"] + person2.attributes["Medicine"] + person2.attributes["Holy"] + person2.attributes["Survival"]):
+                        print(person1.name+ " has slain "+person2.name+", gaining him much renown!")
+                        for item in person2.inventory:
+                            person1.inventory.append(item)
+                        roster.remove(person2)
+                        person1.renown += 100
+                        person1.alignment += 10
+                    else:
+                        print(person1.name+" was defeated by the villain "+person2.name+", getting slain in the process.")
+                        for item in person1.inventory:
+                            person2.inventory.append(item)
+                        roster.remove(person1)
+                        person2.renown += 10
+            
+            if roll == 27: #orc attack
+                attacked = all_locations[r.randrange(0,len(all_locations))]
+                raid_offense = r.randrange(0,100)
+                raid_defense = r.randrange(0,100)
+                town_offense = 0
+                town_defense = 0
+
+                print("An orc siege has occurred in the land of "+attacked)
+
+                for i in roster:
+                    if i.current_location == attacked:
+                        town_offense += i.attributes["Strength"] + i.attributes["Dexterity"] + i.attributes["Intelligence"] + i.attributes["Summoning"] + i.attributes["Astral"] + i.attributes["Umbral"] + i.attributes["Thunder"] + i.attributes["Fire"] + i.attributes["Frost"] + i.attributes["Perception"] + i.attributes["Holy"] + i.attributes["Necromancy"] 
+                        town_defense += i.attributes["Constitution"] +  i.attributes["Acrobatics"] + i.attributes["Athletics"] + i.attributes["Medicine"] + i.attributes["Holy"] + i.attributes["Survival"]
+
+                if town_offense - raid_defense > raid_offense - town_defense:
+                    print("The town has successfully fought off the invasion, earning renown for all those involved.")
+                    for i in roster:
+                        if i.current_location == attacked:
+                            i.attributes["Constitution"] += 1
+                            i.renown += 10
+                else:
+                    print("The orcs have successfully looted the village.")
+                    for i in roster:
+                        if i.current_location == attacked:
+                                print(i.name+" the "+i.race+" "+i.job+" has been killed in the attack on "+attacked)
+                                roster.remove(i)
+
+
 
 
 
@@ -352,98 +424,99 @@ while game:
     if len(asvogod.territory)==0 and len(sansoba.territory)== 0 and len(atennu.territory)== 0 and len(legalia.territory)== 0 and len(venata.territory) == 0 and len(amoranth.territory) == 0: 
         print("Wuxia wins! The game is over.")
         game = False
-    if len(asvogod.territory)==0 and len(wuxia.territory)== 0 and len(atennu.territory)== 0 and len(legalia.territory)== 0 and len(venata.territory) == 0 and len(amoranth.territory) == 0:# NEEDS FIXING
+    if len(asvogod.territory)==0 and len(wuxia.territory)== 0 and len(atennu.territory)== 0 and len(legalia.territory)== 0 and len(venata.territory) == 0 and len(amoranth.territory) == 0:
         print("San Soba wins! The game is over.")
         game = False
-    if len(wuxia.territory)==0 and len(sansoba.territory)== 0 and len(asvogod.territory)== 0 and len(legalia.territory)== 0 and len(venata.territory) == 0 and len(amoranth.territory) == 0:# NEEDS FIXING
+    if len(wuxia.territory)==0 and len(sansoba.territory)== 0 and len(asvogod.territory)== 0 and len(legalia.territory)== 0 and len(venata.territory) == 0 and len(amoranth.territory) == 0:
         print("Aten Nu wins! The game is over.")
         game = False
-    if len(wuxia.territory)==0 and len(sansoba.territory)== 0 and len(atennu.territory)== 0 and len(asvogod.territory)== 0 and len(venata.territory) == 0 and len(amoranth.territory) == 0:# NEEDS FIXING
+    if len(wuxia.territory)==0 and len(sansoba.territory)== 0 and len(atennu.territory)== 0 and len(asvogod.territory)== 0 and len(venata.territory) == 0 and len(amoranth.territory) == 0:
         print("Legalia wins! The game is over.")
         game = False
-    if len(wuxia.territory)==0 and len(sansoba.territory)== 0 and len(atennu.territory)== 0 and len(legalia.territory)== 0 and len(asvogod.territory) == 0 and len(amoranth.territory) == 0:# NEEDS FIXING
+    if len(wuxia.territory)==0 and len(sansoba.territory)== 0 and len(atennu.territory)== 0 and len(legalia.territory)== 0 and len(asvogod.territory) == 0 and len(amoranth.territory) == 0:
         print("Venata wins! The game is over.")
         game = False
-    if len(wuxia.territory)==0 and len(sansoba.territory)== 0 and len(atennu.territory)== 0 and len(legalia.territory)== 0 and len(venata.territory) == 0 and len(asvogod.territory) == 0:# NEEDS FIXING
+    if len(wuxia.territory)==0 and len(sansoba.territory)== 0 and len(atennu.territory)== 0 and len(legalia.territory)== 0 and len(venata.territory) == 0 and len(asvogod.territory) == 0:
         print("Amoranth wins! The game is over.")
         game = False
 
     #Map Nodes
     for i in roster:
-        if i.current_location == "Felghana":
-            visitable_locations = ["Felghana", "Olbereth", "Orthanc", "Aristo", "Verdigris"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Olbereth":
-            visitable_locations = ["Olbereth", "Felghana", "Orthanc", "Arabath"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Orthanc":
-            visitable_locations = ["Orthanc", "Felghana", "Olbereth"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Shendao":
-            visitable_locations = ["Shendao", "Ashwood", "Solitaire"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Anabennar":
-            visitable_locations = ["Anabennar", "Karateka", "The Moorish Gap", "Gilboa"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Karateka":
-            visitable_locations = ["Karateka", "Anabennar", "The Moorish Gap"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "The Moorish Gap":
-            visitable_locations = ["The Moorish Gap", "Anabennar", "Karateka", "Condor"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Telos":
-            visitable_locations = ["Telos", "Misthaven", "Altes"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Misthaven":
-            visitable_locations = ["Misthaven", "Telos", "Altes"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Altes":
-            visitable_locations = ["Altes", "Misthaven", "Telos", "Aristo"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Archea":
-            visitable_locations = ["Archea", "Wurmswood", "Solasta"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Solasta":
-            visitable_locations = ["Solasta", "Gilboa", "Archea", "Mangsvance", "Solitaire"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Mangsvance":
-            visitable_locations = ["Mangsvance", "Solitaire", "Solasta", "Ambervale"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Solitaire":
-            visitable_locations = ["Solitaire", "Shendao", "Ashwood", "Mangsvance", "Solasta"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Verdigris":
-            visitable_locations = ["Verdigris", "Felghana", "Aristo", "Gilboa"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Aristo":
-            visitable_locations = ["Aristo", "Arabath", "Felghana", "Altes", "Verdigris"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Condor":
-            visitable_locations = ["Condor", "Arabath", "The Moorish Gap"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Arabath":
-            visitable_locations = ["Arabath", "Olbereth", "Condor", "Aristo"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Gilboa":
-            visitable_locations = ["Gilboa", "Anabennar", "Solasta", "Verdigris"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Ashwood":
-            visitable_locations = ["Ashwood", "Shendao", "Solitaire", "Ambervale", "Beggar's Grove"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Beggar's Grove":
-            visitable_locations = ["Beggar's Grove", "Ashwood", "Nethervale"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Ambervale":
-            visitable_locations = ["Ambervale", "Mangsvance", "Ashwood"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Wurmswood":
-            visitable_locations = ["Wurmswood", "Archea", "Nethervale"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "Nethervale":
-            visitable_locations = ["Nethervale", "The Dreadlands", "Wurmswood", "Beggar's Grove"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
-        if i.current_location == "The Dreadlands":
-            visitable_locations = ["The Dreadlands", "Nethervale"]
-            i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+        if i.status == "exploring": 
+            if i.current_location == "Felghana":
+                visitable_locations = ["Felghana", "Olbereth", "Orthanc", "Aristo", "Verdigris"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Olbereth":
+                visitable_locations = ["Olbereth", "Felghana", "Orthanc", "Arabath"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Orthanc":
+                visitable_locations = ["Orthanc", "Felghana", "Olbereth"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Shendao":
+                visitable_locations = ["Shendao", "Ashwood", "Solitaire"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Anabennar":
+                visitable_locations = ["Anabennar", "Karateka", "The Moorish Gap", "Gilboa"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Karateka":
+                visitable_locations = ["Karateka", "Anabennar", "The Moorish Gap"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "The Moorish Gap":
+                visitable_locations = ["The Moorish Gap", "Anabennar", "Karateka", "Condor"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Telos":
+                visitable_locations = ["Telos", "Misthaven", "Altes"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Misthaven":
+                visitable_locations = ["Misthaven", "Telos", "Altes"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Altes":
+                visitable_locations = ["Altes", "Misthaven", "Telos", "Aristo"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Archea":
+                visitable_locations = ["Archea", "Wurmswood", "Solasta"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Solasta":
+                visitable_locations = ["Solasta", "Gilboa", "Archea", "Mangsvance", "Solitaire"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Mangsvance":
+                visitable_locations = ["Mangsvance", "Solitaire", "Solasta", "Ambervale"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Solitaire":
+                visitable_locations = ["Solitaire", "Shendao", "Ashwood", "Mangsvance", "Solasta"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Verdigris":
+                visitable_locations = ["Verdigris", "Felghana", "Aristo", "Gilboa"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Aristo":
+                visitable_locations = ["Aristo", "Arabath", "Felghana", "Altes", "Verdigris"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Condor":
+                visitable_locations = ["Condor", "Arabath", "The Moorish Gap"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Arabath":
+                visitable_locations = ["Arabath", "Olbereth", "Condor", "Aristo"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Gilboa":
+                visitable_locations = ["Gilboa", "Anabennar", "Solasta", "Verdigris"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Ashwood":
+                visitable_locations = ["Ashwood", "Shendao", "Solitaire", "Ambervale", "Beggar's Grove"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Beggar's Grove":
+                visitable_locations = ["Beggar's Grove", "Ashwood", "Nethervale"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Ambervale":
+                visitable_locations = ["Ambervale", "Mangsvance", "Ashwood"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Wurmswood":
+                visitable_locations = ["Wurmswood", "Archea", "Nethervale"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "Nethervale":
+                visitable_locations = ["Nethervale", "The Dreadlands", "Wurmswood", "Beggar's Grove"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
+            if i.current_location == "The Dreadlands":
+                visitable_locations = ["The Dreadlands", "Nethervale"]
+                i.current_location = visitable_locations[r.randrange(0,len(visitable_locations))]
         
 

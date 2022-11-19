@@ -72,7 +72,7 @@ amoranth_factions = ["Amoranth"]
 genders = ["Male", "Female"]
 
 class Character:
-    def __init__(self, name, gender, race, culture, job, faction, attributes, current_location, renown, alignment, inventory, money, preferred_weapon):
+    def __init__(self, name, gender, race, culture, job, faction, attributes, current_location, renown, alignment, inventory, money, preferred_weapon, status):
         self.name = name
         self.gender = gender
         self.race = race
@@ -86,6 +86,7 @@ class Character:
         self.inventory = inventory
         self.money = money
         self.preferred_weapon = preferred_weapon
+        self.status = status
 
 
 def generate():
@@ -582,6 +583,6 @@ def generate():
     if selected_faction == "Amoranth":
         selected_location = "Ashwood"
 
-    adventurer = Character(selected_name,selected_gender,selected_race,selected_culture,selected_job,selected_faction, selected_attributes, selected_location, 0, r.randrange(-10,10), [], 0, selected_weapon)
+    adventurer = Character(selected_name,selected_gender,selected_race,selected_culture,selected_job,selected_faction, selected_attributes, selected_location, 0, r.randrange(-10,10), [], 0, selected_weapon, "exploring")
 
     return adventurer
